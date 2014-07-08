@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title> </title>
+    </head>
+    <body>
+        <script type="application/javascript">
+        function ipV4Validate(ip) {
+            var ipArray = ip.split(".");
+            return ipArray.length == 4 && ipArray.every(function (item){
+                var int = parseInt(item);
+                return  int < 256 && int >= 0;
+            });
+        }
+        if(ipV4Validate("123.123.12.0")){
+            console.log('ok');
+        }
+        </script>
+    </body>    
+</html>
