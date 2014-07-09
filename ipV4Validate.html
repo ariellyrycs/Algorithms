@@ -8,13 +8,19 @@
              * @return {boolean}
              */
             function ipV4Validate(ip) {
-                var ipArray = (parseInt(ip) == ip)? ip.split(".") : [];
-                return ipArray.length == 4 && ipArray.every(function (item) {
-                    var int = parseInt(item);
-                    return  int < 256 && int >= 0;
-                });
+                var ipArray = typeof ip !== 'string' || ip.split('.'), 
+                    i;
+                if(ipArray.length != 4) {
+                    return false;
+                }
+                for (i =0; i < 4; i +=1) {
+                    if(ipArray[i] > 255 && ipArray[i] < 0) {
+                        return false;
+                    }
+                }
+                return true;
             }
-            if(ipV4Validate("123.123.12.0")){
+            if(ipV4Validate(345)){
                 console.log('ok');
             }
         </script>
